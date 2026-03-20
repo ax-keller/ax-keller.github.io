@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>QR Code Generator</title>
+  <title>Alex Keller - Projects</title>
   <style>
     * {
       box-sizing: border-box;
@@ -28,7 +28,7 @@
       box-shadow: 0 2px 16px rgba(0, 0, 0, 0.1);
       padding: 32px;
       width: 100%;
-      max-width: 480px;
+      max-width: 640px;
     }
 
     h1 {
@@ -38,171 +38,54 @@
       text-align: center;
     }
 
-    .field {
-      margin-bottom: 16px;
+    .tiles {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 16px;
     }
 
-    label {
-      display: block;
-      font-size: 0.875rem;
-      font-weight: 500;
-      margin-bottom: 6px;
-      color: #444;
-    }
-
-    input[type="text"],
-    select {
-      width: 100%;
-      padding: 10px 12px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      font-size: 1rem;
-      background: #fff;
-      color: #1a1a1a;
-      transition: border-color 0.15s;
-    }
-
-    input[type="text"]:focus,
-    select:focus {
-      outline: none;
-      border-color: #2563eb;
-    }
-
-    .row {
+    a.tile {
       display: flex;
-      gap: 12px;
-    }
-
-    .row .field {
-      flex: 1;
-    }
-
-    .preview {
-      display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
-      min-height: 180px;
-      margin: 24px 0;
-      border-radius: 8px;
+      justify-content: center;
+      padding: 24px 16px;
       background: #fafafa;
-    }
-
-    #qr-preview {
-      max-width: 100%;
-    }
-
-    .buttons {
-      display: flex;
-      gap: 12px;
-    }
-
-    button {
-      flex: 1;
-      padding: 12px;
-      border: none;
       border-radius: 8px;
-      font-size: 1rem;
-      font-weight: 500;
-      cursor: pointer;
-      transition: opacity 0.15s;
-    }
-
-    button:hover {
-      opacity: 0.85;
-    }
-
-    button:active {
-      opacity: 0.7;
-    }
-
-    #download-btn {
-      background: #2563eb;
-      color: #fff;
-    }
-
-    #copy-btn {
-      background: #e5e7eb;
+      text-decoration: none;
       color: #1a1a1a;
+      transition: background-color 0.15s;
     }
 
-    .toast {
-      position: fixed;
-      bottom: 24px;
-      left: 50%;
-      transform: translateX(-50%) translateY(60px);
-      background: #1a1a1a;
-      color: #fff;
-      padding: 10px 20px;
-      border-radius: 8px;
+    a.tile:hover {
+      background: #f0f0f0;
+    }
+
+    a.tile:active {
+      background: #e5e5e5;
+    }
+
+    .tile-icon {
+      font-size: 2rem;
+      margin-bottom: 8px;
+    }
+
+    .tile-title {
       font-size: 0.875rem;
-      opacity: 0;
-      transition: transform 0.25s, opacity 0.25s;
-      pointer-events: none;
-      z-index: 100;
-    }
-
-    .toast.show {
-      transform: translateX(-50%) translateY(0);
-      opacity: 1;
+      font-weight: 500;
+      text-align: center;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>QR Code Generator</h1>
-
-    <div class="field">
-      <label for="text-input">Text</label>
-      <input type="text" id="text-input" placeholder="Enter text or URL..." autocomplete="off" />
-    </div>
-
-    <div class="row">
-      <div class="field">
-        <label for="format-select">Format</label>
-        <select id="format-select">
-          <option value="png">PNG</option>
-          <option value="jpeg">JPG</option>
-          <option value="svg">SVG</option>
-        </select>
-      </div>
-      <div class="field">
-        <label for="style-select">Style</label>
-        <select id="style-select">
-          <option value="square">Square</option>
-          <option value="rounded" selected>Rounded</option>
-          <option value="extra-rounded">Extra Rounded</option>
-          <option value="classy">Classy</option>
-          <option value="classy-rounded">Classy Rounded</option>
-        </select>
-      </div>
-      <div class="field">
-        <label for="corner-style-select">Corner Style</label>
-        <select id="corner-style-select">
-          <option value="square">Square</option>
-          <option value="rounded" selected>Rounded</option>
-          <option value="extra-rounded">Extra Rounded</option>
-        </select>
-      </div>
-    </div>
-
-    <div class="field">
-      <label for="size-input">Export Size (px)</label>
-      <input type="number" id="size-input" value="300" min="50" max="2000" step="10" />
-    </div>
-
-    <div class="preview">
-      <div id="qr-preview"></div>
-    </div>
-
-    <div class="buttons">
-      <button id="download-btn">Download</button>
-      <button id="copy-btn">Copy</button>
+    <h1>Projects</h1>
+    <div class="tiles">
+      <a href="qr-gen/qr-gen.html" class="tile">
+        <span class="tile-icon">⬡</span>
+        <span class="tile-title">QR Code Generator</span>
+      </a>
     </div>
   </div>
-
-  <div class="toast" id="toast"></div>
-
-  <script src="https://unpkg.com/qr-code-styling@1.6.0-rc.1/lib/qr-code-styling.js"></script>
-  <script src="script.js"></script>
 </body>
 </html>
